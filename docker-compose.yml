@@ -48,6 +48,8 @@ services:
       - kong
     volumes: 
       - .:${PWD}
+    environment: 
+      - KONG_ADMIN_URL=http://kong:8001
     working_dir: ${PWD}
     command: ./set-up.sh
     

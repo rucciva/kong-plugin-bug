@@ -2,11 +2,11 @@
 set -euo pipefail
 
 echo "hi!"
-count=${1:-72}
 
-KONG_ADMIN_URL=http://kong:8001
+KONG_ADMIN_URL=${KONG_ADMIN_URL:-http://kong:8001}
 until curl -s -o /dev/null "$KONG_ADMIN_URL" 2>&1; do echo "still waiting"; sleep 1; done
 
+count=${1:-72}
 for i in `seq 1 $count`; do
     echo "data; $i"
     serviceID=$(cat /proc/sys/kernel/random/uuid)
