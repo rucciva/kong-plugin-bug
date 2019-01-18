@@ -8,7 +8,7 @@ services:
       - POSTGRES_USER=kong
 
   migrator:
-    image: kong:1.0.0-alpine
+    image: kong:1.0.1-alpine
     restart: on-failure
     depends_on:
       - postgres
@@ -19,7 +19,7 @@ services:
     command: kong migrations bootstrap
   
   kong:
-    image: kong:1.0.0-alpine
+    image: kong:1.0.1-alpine
     restart: unless-stopped
     depends_on: 
       - migrator
