@@ -52,8 +52,8 @@ for i in `seq 1 $count`; do
     curl \
         -fs \
         -o /dev/null \
-        -X PUT \
-        "$KONG_ADMIN_URL/plugins/$(cat /proc/sys/kernel/random/uuid)" \
+        -X POST \
+        "$KONG_ADMIN_URL/plugins" \
         -d "route.id=$routeID" \
         -d "name=acl" \
         -d "config.whitelist=api-$i" \
@@ -70,8 +70,8 @@ for i in `seq 1 $count`; do
     curl \
         -fs \
         -o /dev/null \
-        -X PUT \
-        "$KONG_ADMIN_URL/plugins/$(cat /proc/sys/kernel/random/uuid)" \
+        -X POST \
+        "$KONG_ADMIN_URL/plugins" \
         -d "route.id=$routeID" \
         -d "consumer.id=$consumerID" \
         -d "name=correlation-id" \
